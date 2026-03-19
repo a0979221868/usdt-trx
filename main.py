@@ -1,15 +1,16 @@
 import os
 import telebot
 import ccxt
-
 # 從環境變數讀取
 TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
+print(f"DEBUG: TELEGRAM_TOKEN = {TELEGRAM_TOKEN}")
+if not TELEGRAM_TOKEN:
+    raise Exception("錯誤：沒有設定 TELEGRAM_TOKEN 環境變數")
 OKX_API_KEY = os.environ.get('OKX_API_KEY')
 OKX_SECRET_KEY = os.environ.get('OKX_SECRET_KEY')
 OKX_PASSPHRASE = os.environ.get('OKX_PASSPHRASE')
 DEPOSIT_ADDRESS = os.environ.get('OKX_DEPOSIT_ADDRESS')
 FEE_RATE = float(os.environ.get('FEE_RATE', 0.01))
-
 # 初始化 bot
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
